@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: asgbuggy-deployment
+  name: zico-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: asgbuggy
+      app: zicodev
   template:
     metadata:
       labels:
-        app: asgbuggy
+        app: zicodev
     spec:
       containers:
-      - name: asgbuggy
-        image: 145988340565.dkr.ecr.us-west-2.amazonaws.com/asg
+      - name: zicodev
+        image: 998284843362.dkr.ecr.us-east-1.amazonaws.com/zicodev
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -24,9 +24,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: asgbuggy
-    k8s-app: asgbuggy
-  name: asgbuggy
+    app: zicodev
+    k8s-app: zicodev
+  name: zicodev
 spec:
   ports:
   - name: http
@@ -35,4 +35,4 @@ spec:
     targetPort: 8080
   type: LoadBalancer
   selector:
-    app: asgbuggy
+    app: zicodev

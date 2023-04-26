@@ -22,7 +22,7 @@ pipeline {
             steps { 
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
                  script{
-                 app =  docker.build("asg")
+                 app =  docker.build("zicodev")
                  }
                }
             }
@@ -38,7 +38,7 @@ pipeline {
             }
     	}
 	   
-	stage('Kubernetes Deployment of ASG Bugg Web Application') {
+	stage('Kubernetes Deployment of ZicoDev Bugg Web Application') {
 	   steps {
 	      withKubeConfig([credentialsId: 'kubelogin']) {
 		  sh('kubectl delete all --all -n devsecops')
